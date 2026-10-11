@@ -1,0 +1,26 @@
+name: Merge IPTV Playlists
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Скрипт будет сам обновлять ссылки каждые 6 часов
+  workflow_dispatch: # Позволяет запустить обновление вручную
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Combine Playlists
+        run: |
+          echo "#EXTM3U" > playlist.m3u
+          
+          # Загрузка и склейка первого плейлиста
+          curl -sL "http://hls.gd" | grep -v "#EXTM3U" >> playlist.m3u
+          
+          # Загрузка и склейка второго плейлиста
+          curl -sL "http://ottclub.net" | grep -v "#EXTM3U" >> playlist.m3u
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          keep_files: true
