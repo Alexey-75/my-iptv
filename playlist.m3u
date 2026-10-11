@@ -1,0 +1,21 @@
+#EXTM3U
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<section class="uk-section">
+    <div class="uk-container uk-flex uk-flex-center">
+        <div class="uk-width-1-2">
+			<div style="font-size: 5em">500</div>
+			<h1 class="uk-heading-large">Ой! Что-то сломалось. Вернитесь на предыдущую страницу и повторите запрос...</h1>
+			<div class="uk-text-center" >
+				<ul class="uk-subnav uk-subnav-pill uk-container-center">
+					<li><a href="/support">поддержка</a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+</section>
